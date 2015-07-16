@@ -5,12 +5,19 @@
  */
 package classes;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  *
  * @author DSE
  */
 public class mainclass {
-     public static void main(String[] args) {
+    
+    
+    
+     public static void main(String[] args) throws ParseException {
          Hotel h1;
          Employee e1;
          Reservation rr1;
@@ -22,7 +29,12 @@ public class mainclass {
          System.out.println(h1);
          System.out.println(e1);
          System.out.println(rr1);
-         
-     }
-    
+        
+     SimpleDateFormat dt1  = new SimpleDateFormat("dd/mm/yyyy");
+     //Date d1, d2;
+     Date d1 = dt1.parse(rr1.getDateStart());
+     Date d2 = dt1.parse(rr1.getDateEnd());
+     
+     System.out.println(d2.after(d1));
+    }
 }
