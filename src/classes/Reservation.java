@@ -5,6 +5,12 @@
  */
 package classes;
 
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+
 /**
  *
  * @author DSE
@@ -57,6 +63,15 @@ public class Reservation {
         return "Reservation{" + "uid=" + uid + ", dateStart=" + dateStart + ", dateEnd=" + dateEnd + ", cost=" + cost + '}';
     }
     
+    public void save() throws FileNotFoundException, IOException{
+        FileOutputStream file2 = new FileOutputStream("reservation.txt", true);
+        OutputStreamWriter output= new OutputStreamWriter(file2);
+        BufferedWriter bw1 = new BufferedWriter(output);
+        
+        String s1 = this.uid + "," + this.dateStart + ","+ this.dateEnd + ","+ this.cost+"\n";
+        bw1.write(s1);
+        bw1.close();
     
+    }
     
 }

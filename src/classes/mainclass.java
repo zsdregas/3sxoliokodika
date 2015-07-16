@@ -5,6 +5,7 @@
  */
 package classes;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -17,7 +18,7 @@ public class mainclass {
     
     
     
-     public static void main(String[] args) throws ParseException {
+     public static void main(String[] args) throws ParseException, IOException {
          Hotel h1;
          Employee e1;
          Reservation rr1;
@@ -27,6 +28,10 @@ public class mainclass {
          rr1 = new Reservation("r1","16/07/2015","22/07/2015",1500);
          
          System.out.println(h1);
+         
+         h1.save();
+         e1.save();
+         rr1.save();
          System.out.println(e1);
          System.out.println(rr1);
         
