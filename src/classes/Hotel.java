@@ -68,8 +68,7 @@ public class Hotel {
         OutputStreamWriter output= new OutputStreamWriter(file2);
         BufferedWriter bw1 = new BufferedWriter(output);
         
-        String s1 = this.name + "," + this.address + ","+ this.stars + ","+ this.telephone+"\n";
-        bw1.write(s1);
+        bw1.write(this.name + ";" + this.address + ";"+ this.stars + ";"+ this.telephone+"\n");
         bw1.close();
     
     }

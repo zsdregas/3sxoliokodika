@@ -68,8 +68,7 @@ public class Reservation {
         OutputStreamWriter output= new OutputStreamWriter(file2);
         BufferedWriter bw1 = new BufferedWriter(output);
         
-        String s1 = this.uid + "," + this.dateStart + ","+ this.dateEnd + ","+ this.cost+"\n";
-        bw1.write(s1);
+        bw1.write(this.uid + ";" + this.dateStart + ";"+ this.dateEnd + ";"+ this.cost+"\n");
         bw1.close();
     
     }
