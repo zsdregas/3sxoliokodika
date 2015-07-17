@@ -78,7 +78,7 @@ public class Employee {
         OutputStreamWriter output= new OutputStreamWriter(file2);
         BufferedWriter bw1 = new BufferedWriter(output);
         
-        bw1.write(this.uid + ";" + this.fname + ";"+ this.lname + ";"+ this.age+";"+ this.age+"\n");
+        bw1.write(this.uid + ";" + this.fname + ";"+ this.lname + ";"+ this.age+";"+ this.salary+"\n");
         bw1.close();
     
     }

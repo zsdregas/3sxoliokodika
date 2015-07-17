@@ -39,6 +39,28 @@ public class mainclass {
         }
 
     }
+    
+     public static void printEmployees(Employee[] employees1) throws IOException{
+        FileInputStream fish = new FileInputStream("employee.txt");
+        InputStreamReader input1 = new InputStreamReader(fish);
+        BufferedReader br1 = new BufferedReader(input1);
+
+        String data1;
+        int i1=0;
+        while((data1 = br1.readLine())!=null){
+           
+            String[] result1 = data1.split(";");
+            employees1[i1] = new Employee(result1[0],result1[1],result1[2], Integer.parseInt(result1[3]),Double.parseDouble(result1[4]));
+            i1++;
+        }
+        br1.close();
+
+        for (Employee employee1 : employees1) {
+            System.out.println(employee1);
+        }
+
+    }
+    
 
      public static void main(String[] args) throws ParseException, IOException {
          Hotel h1;
@@ -79,13 +101,18 @@ public class mainclass {
      hotels = new Hotel[lines];
      
      printhotels(hotels);
-     //System.out.println("Το hotels έχει "+hotels.length+" κελιά.");
- 
-    Employee [] employees;
+     
+     BufferedReader reader1 = new BufferedReader(new FileReader("employee.txt"));
+     int lines1 = 0;
+     while (reader1.readLine() != null) lines1++;
+           reader1.close();
+     
+//     hotels = new Hotel[lines]; 
+    Employee [] employees2;
+    employees2 = new Employee[lines1];
+    printEmployees(employees2);
+    
+    
     Reservation[] reservations;
-    
-    
-    
-   // System.out.println(lines); 
      }
 }
