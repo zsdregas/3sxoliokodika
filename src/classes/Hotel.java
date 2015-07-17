@@ -20,10 +20,11 @@ public class Hotel {
     private String name, address, telephone;
     private int stars;
 
-    public Hotel(String name, String address, String telephone) {
+    public Hotel(String name, String address, String telephone,int stars) {
         this.name = name;
         this.address = address;
         this.telephone = telephone;
+        this.stars = stars;
     }
 
     public String getName() {
@@ -68,7 +69,7 @@ public class Hotel {
         OutputStreamWriter output= new OutputStreamWriter(file2);
         BufferedWriter bw1 = new BufferedWriter(output);
         
-        bw1.write(this.name + ";" + this.address + ";"+ this.stars + ";"+ this.telephone+"\n");
+        bw1.write(this.name + ";" + this.address + ";"+ this.telephone + ";"+ this.stars+"\n");
         bw1.close();
     
     }

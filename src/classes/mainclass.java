@@ -5,7 +5,11 @@
  */
 package classes;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -16,14 +20,32 @@ import java.util.Date;
  */
 public class mainclass {
     
-    
-    
+    public static void printhotels(Hotel[] hotels) throws IOException{
+        FileInputStream fis = new FileInputStream("hotel.txt");
+        InputStreamReader input = new InputStreamReader(fis);
+        BufferedReader br = new BufferedReader(input);
+
+        String data;
+        int i=0;
+        while((data = br.readLine())!=null){
+            String[] result = data.split(";");
+            hotels[i] = new Hotel(result[0],result[1],result[2], Integer.parseInt(result[3]));
+            i++;
+        }
+        br.close();
+
+        for (Hotel hotel : hotels) {
+            System.out.println(hotel);
+        }
+
+    }
+
      public static void main(String[] args) throws ParseException, IOException {
          Hotel h1;
          Employee e1;
          Reservation r1, r2;
          
-         h1 = new Hotel("Kisamos","Kriti","758694");
+         h1 = new Hotel("Kisamos","Kriti","758694",5);
          e1 = new Employee("c1","John","John",30, 1000);
          r1 = new Reservation("r1","16/07/2015","22/07/2015",1500);
          r2 = new Reservation("r2","18/10/2015","22/07/2015",1500);
@@ -45,5 +67,25 @@ public class mainclass {
      Date d2 = dt1.parse(r1.getDateEnd());
      
      System.out.println(d2.after(d1));
-    }
+      
+     
+     BufferedReader reader = new BufferedReader(new FileReader("hotel.txt"));
+     int lines = 0;
+     while (reader.readLine() != null) lines++;
+           reader.close();
+     
+     Hotel [] hotels;
+     
+     hotels = new Hotel[lines];
+     
+     printhotels(hotels);
+     //System.out.println("Το hotels έχει "+hotels.length+" κελιά.");
+ 
+    Employee [] employees;
+    Reservation[] reservations;
+    
+    
+    
+   // System.out.println(lines); 
+     }
 }
