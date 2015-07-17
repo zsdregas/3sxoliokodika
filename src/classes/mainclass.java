@@ -114,5 +114,13 @@ public class mainclass {
     
     
     Reservation[] reservations;
+    
+    Technical tech1;
+    tech1 = new Technical("Ηλεκτρολόγος", "200", "Γιάννης", "Ιακώβου", 20, 1000.0);
+    
+    System.out.println(tech1.toString());
+    
+    tech1.save();
+     
      }
 }

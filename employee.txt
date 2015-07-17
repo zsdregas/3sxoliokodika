@@ -4,3 +4,9 @@ c1;John;John;30;1000.0
 c1;John;John;30;1000.0
 c1;John;John;30;1000.0
 c1;John;John;30;1000.0
+c1;John;John;30;1000.0
+c1;John;John;30;1000.0
+c1;John;John;30;1000.0
+c1;John;John;30;1000.0
+c1;John;John;30;1000.0
+200;Γιάννης;Ιακώβου;20;1000.0;Ηλεκτρολόγος
