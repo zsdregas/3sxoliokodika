@@ -13,6 +13,7 @@ import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.LinkedList;
 
 /**
  *
@@ -121,6 +122,8 @@ public class mainclass {
     System.out.println(tech1.toString());
     
     tech1.save();
+    
+    
      
      }
 }

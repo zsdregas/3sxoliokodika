@@ -73,7 +73,7 @@ public class Employee {
         return "Employee{" + "uid=" + uid + ", fname=" + fname + ", lname=" + lname + ", age=" + age + ", salary=" + salary + '}';
     }
     
-     public void save() throws FileNotFoundException, IOException{
+    public void save() throws FileNotFoundException, IOException{
         FileOutputStream file2 = new FileOutputStream("employee.txt", true);
         OutputStreamWriter output= new OutputStreamWriter(file2);
         BufferedWriter bw1 = new BufferedWriter(output);
@@ -82,5 +82,8 @@ public class Employee {
         bw1.close();
     
     }
-    
+     
+    public void save(BufferedWriter bw) throws FileNotFoundException, IOException{  
+        bw.write(this.uid + ";" + this.fname + ";"+ this.lname + ";"+ this.age+";"+ this.salary+"\n");
+    }
 }

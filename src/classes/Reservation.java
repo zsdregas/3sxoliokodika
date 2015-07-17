@@ -73,4 +73,8 @@ public class Reservation {
     
     }
     
+    public void save(BufferedWriter bw) throws FileNotFoundException, IOException{
+         bw.write(this.uid + ";" + this.dateStart + ";"+ this.dateEnd + ";"+ this.cost+"\n");
+    }
+    
 }

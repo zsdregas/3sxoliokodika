@@ -10,6 +10,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  *
@@ -19,12 +21,18 @@ public class Hotel {
     
     private String name, address, telephone;
     private int stars;
+    
+    private ArrayList <Employee> employees;
+    private ArrayList <Reservation> reservations;
 
     public Hotel(String name, String address, String telephone,int stars) {
         this.name = name;
         this.address = address;
         this.telephone = telephone;
         this.stars = stars;
+        
+        employees = new ArrayList<>();
+        reservations = new ArrayList<>();
     }
 
     public String getName() {
@@ -71,7 +79,61 @@ public class Hotel {
         
         bw1.write(this.name + ";" + this.address + ";"+ this.telephone + ";"+ this.stars+"\n");
         bw1.close();
-    
+        
+        FileOutputStream EmplFile = new FileOutputStream("employee.txt", true);
+        OutputStreamWriter output1= new OutputStreamWriter(EmplFile);
+        BufferedWriter bw = new BufferedWriter(output1);
+        for (Employee employee : this.employees) {
+            employee.save(bw);
+        }
+        bw.close();
+        
+        FileOutputStream resFile = new FileOutputStream("reservation.txt", true);
+        OutputStreamWriter output2= new OutputStreamWriter(resFile);
+        bw = new BufferedWriter(output2);
+        
+        for (int i=0; i<this.reservations.size();i++){
+             this.reservations.get(i).save(bw);
+         }
+        
     }
+    
+    public boolean addEmployee(Employee empl){
+       
+        int size;
+        size = employees.size();
+        for (int i=0; i<size;i++){
+            
+            if(employees.get(i).uid.equals(empl.uid)){
+                System.out.println("Ο υπάλληλος υπάρχει ήδη΄!!");
+                return false;
+            }
+        }
+        
+        employees.add(empl);
+        
+        
+        return true;
+        
+    }
+    
+    public boolean addReservation(Reservation res){
+        boolean found = false;
+        int size = this.reservations.size();
+        for (int i=0; i<size;i++){
+            
+            if(this.reservations.get(i).uid.equals(res.uid)){
+                found = true;
+                
+            }
+        }
+        if (!found){
+            this.reservations.add(res);
+        }
+        
+        return !found;
+        
+    }
+    
     
 }
