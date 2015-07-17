@@ -80,6 +80,8 @@ public class Hotel {
         bw1.write(this.name + ";" + this.address + ";"+ this.telephone + ";"+ this.stars+"\n");
         bw1.close();
         
+        
+        //Save Employess
         FileOutputStream EmplFile = new FileOutputStream("employee.txt", true);
         OutputStreamWriter output1= new OutputStreamWriter(EmplFile);
         BufferedWriter bw = new BufferedWriter(output1);
@@ -88,6 +90,7 @@ public class Hotel {
         }
         bw.close();
         
+        //Save Reservations
         FileOutputStream resFile = new FileOutputStream("reservation.txt", true);
         OutputStreamWriter output2= new OutputStreamWriter(resFile);
         bw = new BufferedWriter(output2);
@@ -95,7 +98,7 @@ public class Hotel {
         for (int i=0; i<this.reservations.size();i++){
              this.reservations.get(i).save(bw);
          }
-        
+        bw.close();
     }
     
     public boolean addEmployee(Employee empl){
@@ -117,22 +120,23 @@ public class Hotel {
         
     }
     
-    public boolean addReservation(Reservation res){
-        boolean found = false;
+    public boolean addReservation(Reservation res) throws RuntimeException{
         int size = this.reservations.size();
         for (int i=0; i<size;i++){
-            
-            if(this.reservations.get(i).uid.equals(res.uid)){
-                found = true;
-                
+           
+                if(this.reservations.get(i).uid.equals(res.uid)){
+                   // System.out.println("Η κράτηση υπάρχει ήδη");
+                   throw new RuntimeException("Η κράτηση υπάρχει ήδη");
+                  // return false;
+
+                }
+                     //   catch(RuntimeException e){
+                System.out.print("Error"+e.getMessage());
             }
-        }
-        if (!found){
-            this.reservations.add(res);
-        }
         
-        return !found;
         
+        this.reservations.add(res);
+        return true;
     }
     
     
